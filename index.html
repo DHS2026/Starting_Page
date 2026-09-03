@@ -7,10 +7,10 @@
     <style>
         /* CSS কালার স্কিম এবং স্টাইল */
         :root {
-            --bg-color: #1B5B6B; /* আপনার দেওয়া গাঢ় ব্যাকগ্রাউন্ড কালার */
-            --accent-color: #f39c12; /* স্কুলের থিমের সাথে মানানসই সোনালী-কমলা অ্যাকসেন্ট */
-            --text-light: #ffffff; /* গাঢ় ব্যাকগ্রাউন্ডে পড়ার সুবিধার জন্য সাদা লেখা */
-            --spinner-base: rgba(255, 255, 255, 0.2); /* স্পিনারের হালকা বর্ডার */
+            --bg-color: #1B5B6B; /* ব্যাকগ্রাউন্ড কালার */
+            --accent-color: #f39c12; /* সোনালী-কমলা অ্যাকসেন্ট */
+            --text-light: #ffffff; /* সাদা লেখা */
+            --spinner-base: rgba(255, 255, 255, 0.2); 
         }
 
         body, html {
@@ -42,26 +42,44 @@
             transition: opacity 0.5s ease;
         }
 
+        /* গোলাকার এবং অ্যানিমেটেড লোগো কন্টেইনার */
         .logo-container {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 25px;
-            /* আপনার দেওয়া নতুন লোগো ফাইল নেম */
+            width: 130px;
+            height: 130px;
+            margin-bottom: 30px;
             background-image: url('imresizer-unnamed_(1).png'); 
-            background-size: contain;
+            background-size: cover; /* লোগোটি পুরো বৃত্ত জুড়ে থাকবে */
             background-repeat: no-repeat;
             background-position: center;
-            /* লোগোটি যাতে সুন্দর ফুটে ওঠে তার জন্য ড্রপ-শ্যাডো */
-            filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.4));
+            background-color: #ffffff; /* বৃত্তের ভেতরে সাদা ব্যাকগ্রাউন্ড */
+            border-radius: 50%; /* লোগোটিকে পুরোপুরি গোলাকার করার জন্য */
+            border: 4px solid var(--accent-color); /* লোগোর চারপাশে সোনালী বর্ডার */
+            animation: pulseLogo 2s infinite ease-in-out; /* পালস অ্যানিমেশন */
+        }
+
+        /* লোগোর পালস অ্যানিমেশন (ছোট-বড় হওয়া এবং আভা ছড়ানো) */
+        @keyframes pulseLogo {
+            0% { 
+                transform: scale(1); 
+                box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7); 
+            }
+            50% { 
+                transform: scale(1.08); 
+                box-shadow: 0 0 20px 15px rgba(243, 156, 18, 0); 
+            }
+            100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 0 0 rgba(243, 156, 18, 0); 
+            }
         }
 
         /* প্রফেশনাল রাউন্ড স্পিনার */
         .school-spinner {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            border: 5px solid var(--spinner-base); 
-            border-top: 5px solid var(--accent-color); 
+            border: 4px solid var(--spinner-base); 
+            border-top: 4px solid var(--accent-color); 
             animation: spin 1s linear infinite;
         }
 
